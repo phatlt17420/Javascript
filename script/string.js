@@ -1,6 +1,7 @@
 let a = "chuỗi string";
-
-console.log(a);
-console.log(4 + 5 + "a");
-console.log("a" + 4 + 5);
-console.log("LeTanPhat");
+let b = 5;
+let c = 6;
+console.log(`'cách cộng số'
+    
+    
+    ${b + c}`);
