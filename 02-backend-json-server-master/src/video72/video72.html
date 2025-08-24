@@ -5,13 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs</title>
+    <style>
+        #table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #table td,
+        #table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #table tr:hover {
+            background-color: #ddd;
+        }
+
+        #table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Video 72</h1>
+    <div>Title: <input type="text" id="input_Title"></div>
+    <br>
+    <div>Author: <input type="text" id="input_Author"></div>
+    <br>
+    <div>Content: <input type=" text" id="input_Content"></div>
+    <br>
+    <div><button id="btn_Save">Save</button></div>
+    <br>
+    <table id="table">
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Content</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
 
-
-
+        </tbody>
+    </table>
 
 
     <script src="video72.js"></script>
