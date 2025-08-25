@@ -13,7 +13,7 @@ const fetchContent = async () => {
         <td>${element.title}</td>
         <td>${element.author}</td>
          <td>${element.content}</td>
-         <td><button>Xoá</button></td>
+         <td><button class="delete-blog" data-id="${element.id}">Xoá</button></td>
         </tr>
         `
         });
@@ -30,10 +30,29 @@ const addNewRowToEnd = (element) => {
         <td>${element.title}</td>
         <td>${element.author}</td>
          <td>${element.content}</td>
-         <td><button>Xoá</button></td>
+        <td><button class="delete-blog" data-id="${element.id}">Xoá</button></td>
         </tr>    
     `;
     tableBody.appendChild(newRow);
+    const btn = document.querySelector(`[data-id="${element.id}"`);
+    btn.addEventListener("click", async () => {
+        const id = btn.getAttribute("data-id");
+
+        const rawResponse = await fetch(`http://localhost:8000/blogs/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+
+        });
+        const data = await rawResponse.json();
+        //delete html row
+        const row = btn.closest('tr');
+        row.remove();
+    })
+
+
 }
 
 
@@ -57,21 +76,43 @@ const handleAddNewBlog = () => {
             })
         });
         const data = await rawResponse.json();
+
+
         addNewRowToEnd(data);
         console.log("phan hoi API: ", data);
-
-
-
     })
-
-
-
-
-
 }
 
+const handleDeleteBtns = () => {
+    const btns = document.querySelectorAll(".delete-blog");
+    if (btns) {
+        btns.forEach((btn, index) => {
+            btn.addEventListener("click", async () => {
+                const id = btn.getAttribute("data-id");
 
-fetchContent();
+                const rawResponse = await fetch(`http://localhost:8000/blogs/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+
+                });
+                const data = await rawResponse.json();
+                //delete html row
+                const row = btn.closest('tr');
+                row.remove();
+            })
+
+
+        })
+    }
+}
+
+fetchContent().then(() => {
+    handleDeleteBtns();
+
+});
 handleAddNewBlog();
 
 
