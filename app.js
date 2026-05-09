@@ -1,22 +1,16 @@
-let promise = new Promise(
-    function (resolve, reject) {
-        // logic
-        // thành công: resolve()
-        // thất bại: reject()
-        resolve([{
-            id: 8,
-            name: 'Phát'
+// function sleep(ms) {
+//     return new Promise(function (resolve) {
+//         setTimeout(resolve, ms);
+//     })
+// }
+// sleep(1000)
+//     .then(function () {
+//         console.log(1);
+//         return sleep(1000);
+//     })
+//     .then(function () {
+//         console.log(2);
+//         return sleep(1000);
+//     })
 
-        }])
-    }
-)
-promise
-    .then(function (course) {
-        console.log(course);
-    })
-    .catch(function () {
-        console.log('Failure');
-    })
-    .finally(function () {
-        console.log('Done');
-    })
+
